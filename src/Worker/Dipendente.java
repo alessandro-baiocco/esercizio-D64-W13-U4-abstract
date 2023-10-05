@@ -20,7 +20,7 @@ public class Dipendente {
 
     public Dipendente( int matricola , String dipartimento){
         this.dipartimento = dipartimento;
-        this.livello = "operaio";
+        this.livello = "OPERAIO";
         this.stipendio = stipendioBase;
         this.importoOrarioStraordinario = 30.0;
         this.matricola = matricola;
@@ -46,7 +46,7 @@ public class Dipendente {
 
 
     public void stampaDatiDipendente(){
-        System.out.println( this.livello + " n.matricola : " + this.matricola + "stipendio : " + this.stipendio + " allocato in : " + this.dipartimento);
+        System.out.println( this.livello + " n.matricola : " + this.matricola + " stipendio : " + this.stipendio + " allocato in : " + this.dipartimento);
     }
 
     //setters
@@ -68,15 +68,15 @@ public class Dipendente {
     }
 
     public void promotion(){
-        if(Objects.equals(this.livello, "operaio")){
+        if(Objects.equals(this.livello, "OPERAIO")){
             this.livello = "IMPIEGATO";
-            this.stipendioBase *=  (1000 * 1.2);
+            this.stipendio *=   1.2;
         }else if(Objects.equals(this.livello, "IMPIEGATO")){
             this.livello = "QUADRO";
-            this.stipendioBase *=  (1000 * 1.5);
+            this.stipendio *= 1.5;
         }else if(Objects.equals(this.livello, "QUADRO")){
             this.livello = "DIRIGENTE";
-            this.stipendioBase = (1000 *  2);
+            this.stipendio  *=  2;
         }else  {
             System.out.println("non è possibile promuovere");
         }
