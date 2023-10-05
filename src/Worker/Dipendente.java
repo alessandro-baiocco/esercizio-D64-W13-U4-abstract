@@ -8,9 +8,10 @@ public class Dipendente {
     double stipendioBase = 1000;
     int matricola;
     double stipendio;
-    String livello;
-    String dipartimento;
+    Livelli livello ;
+    Zone dipartimento;
     double importoOrarioStraordinario;
+
 
 
 
@@ -18,14 +19,14 @@ public class Dipendente {
     //costruttore
 
 
-    public Dipendente( int matricola , String dipartimento){
+    public Dipendente( int matricola , Zone dipartimento){
         this.dipartimento = dipartimento;
-        this.livello = "OPERAIO";
+        this.livello = Livelli.OPERAIO;
         this.stipendio = stipendioBase;
         this.importoOrarioStraordinario = 30.0;
         this.matricola = matricola;
     }
-    public Dipendente( int matricola , String dipartimento , String livello , int stipendio , double importoOrarioStraordinario){
+    public Dipendente( int matricola , Zone dipartimento , Livelli livello , int stipendio , double importoOrarioStraordinario){
         this.dipartimento = dipartimento;
         this.livello = livello;
         this.stipendio = stipendio;
@@ -50,7 +51,7 @@ public class Dipendente {
     }
 
     //setters
-    public void alloca(String zona){
+    public void alloca(Zone zona){
         this.dipartimento = zona;
     }
     public void faiStraordinari(double howMuch){
@@ -68,14 +69,14 @@ public class Dipendente {
     }
 
     public void promotion(){
-        if(Objects.equals(this.livello, "OPERAIO")){
-            this.livello = "IMPIEGATO";
+        if(Objects.equals(this.livello, Livelli.OPERAIO)){
+            this.livello = Livelli.OPERAIO;
             this.stipendio *=   1.2;
-        }else if(Objects.equals(this.livello, "IMPIEGATO")){
-            this.livello = "QUADRO";
+        }else if(Objects.equals(this.livello,  Livelli.IMPIEGATO)){
+            this.livello = Livelli.QUADRO;
             this.stipendio *= 1.5;
-        }else if(Objects.equals(this.livello, "QUADRO")){
-            this.livello = "DIRIGENTE";
+        }else if(Objects.equals(this.livello,  Livelli.QUADRO)){
+            this.livello = Livelli.DIRIGENTE;
             this.stipendio  *=  2;
         }else  {
             System.out.println("non è possibile promuovere");
